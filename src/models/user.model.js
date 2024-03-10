@@ -92,3 +92,7 @@ userSchema.methods.generateRefreshToken = function () {
 };
 
 export const User = mongoose.model("User", userSchema);
+
+// access token : expired in short duration
+
+// refresh token : expired in a longer duration
