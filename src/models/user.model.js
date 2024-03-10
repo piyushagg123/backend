@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
-import { jwt } from "jsonwebtoken";
+import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-//jwt: bearer token : whoever has it data is send to it
+//Jwt: bearer token : whoever has it data is send to it
 
 //Pre hook of mongoose is used for encryption
 
@@ -66,7 +66,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 userSchema.methods.generateAccessToken = function () {
-  return jwt.sign(
+  return Jwt.sign(
     {
       _id: this._id,
       email: this.email,
@@ -80,7 +80,7 @@ userSchema.methods.generateAccessToken = function () {
   );
 };
 userSchema.methods.generateRefreshToken = function () {
-  return jwt.sign(
+  return Jwt.sign(
     {
       _id: this._id,
     },
